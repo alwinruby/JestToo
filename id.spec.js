@@ -23,9 +23,13 @@ describe('Requirements', () => {
     expect(id).toBe(0.75);
   });
 
+  // test('returns an integer', () => {
+  //  const id = getRandomId();
+  //  expect(Number.isInteger(id)).toBe(true);
+  // });
   test('returns an integer', () => {
    const id = getRandomId();
-   expect(Number.isInteger(id)).toBe(true);
+   expect(id).toBe(Math.floor(id));
   });
-  
+
 });
