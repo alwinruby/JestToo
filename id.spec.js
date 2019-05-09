@@ -3,11 +3,18 @@
 //    expect(1).toBe(1);
 // });
 
-describe('First group of tests', () => {
+describe('Jest Basics', () => {
    test('Jest is working', () => {
       expect(1).toBe(1);
    });
 });
-describe('Another group of tests', () => {
-   // ...more tests here
+
+describe('Requirements', () => {
+  test('returns a random number', () => {
+    const mockMath = Object.create(global.Math);
+    mockMath.random = jest.fn(() => 0.75);
+    global.Math = mockMath;
+    const id = getNewId();
+    expect(id).toBe(0.75);
+  });
 });
