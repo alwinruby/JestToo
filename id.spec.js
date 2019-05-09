@@ -13,6 +13,10 @@ function getNewId() {
    return Math.random()
 }
 
+function getRandomId() {
+   return Math.floor(Math.random()); // convert to integer
+}
+
 describe('Requirements', () => {
 
   // test('returns a random number', () => {
