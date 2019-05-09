@@ -19,14 +19,6 @@ function getRandomId() {
 
 describe('Requirements', () => {
 
-  // test('returns a random number', () => {
-  //   const mockMath = Object.create(global.Math);
-  //   mockMath.random = jest.fn(() => 0.75);
-  //   global.Math = mockMath;
-  //   const id = getNewId();
-  //   expect(id).toBe(0.75);
-  // });
-
   test('returns a random number', () => {
    const originalMath = Object.create(global.Math);
    const mockMath = Object.create(global.Math);
@@ -37,10 +29,18 @@ describe('Requirements', () => {
    global.Math = originalMath;
   });
 
-  // test('returns an integer', () => {
-  //  const id = getRandomId();
-  //  expect(Number.isInteger(id)).toBe(true);
+  // test('returns a random number', () => {
+  //  jest.spyOn(Math, 'floor'); // <--------------------changed
+  //  const mockMath = Object.create(global.Math);
+  //  const globalMath = Object.create(global.Math);
+  //  mockMath.random = () => 0.75;
+  //  global.Math = mockMath;
+  //  const id = getNewId();
+  //  getNewId(); //<------------------------------------changed
+  //  expect(Math.floor).toHaveBeenCalledWith(0.75); //<-changed
+  //  global.Math = globalMath;
   // });
+
   test('returns an integer', () => {
    const id = getRandomId();
    expect(id).toBe(Math.floor(id));
