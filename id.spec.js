@@ -9,6 +9,10 @@ describe('Jest Basics', () => {
    });
 });
 
+function getNewId() {
+   return Math.random()
+}
+
 describe('Requirements', () => {
   test('returns a random number', () => {
     const mockMath = Object.create(global.Math);
