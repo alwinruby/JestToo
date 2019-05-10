@@ -29,7 +29,7 @@ describe('Requirements', () => {
    global.Math = originalMath;
   });
 
-  // test('returns a random number', () => {
+  // test('returns a random number2', () => {
   //  jest.spyOn(Math, 'floor'); // <--------------------changed
   //  const mockMath = Object.create(global.Math);
   //  const globalMath = Object.create(global.Math);
@@ -45,5 +45,11 @@ describe('Requirements', () => {
    const id = getRandomId();
    expect(id).toBe(Math.floor(id));
   });
+
+  test('generates a number within a specified range', () => {
+   const id = getRandomId(10, 100);
+   expect(id).toBeLessThanOrEqual(100);
+   expect(id).toBeGreaterThanOrEqual(10);
+});
 
 });
