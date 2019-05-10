@@ -67,14 +67,26 @@ describe('Requirements', () => {
   //  expect(id).toBeGreaterThanOrEqual(10);
   // });
 
+  // test('generates a number within a defined range', () => {
+  //  for (let i = 0; i < 100; i ++) {
+  //     const id = getRandomId(10, 100);
+  //
+  //     expect(id).toBeLessThanOrEqual(100);
+  //     expect(id).toBeGreaterThanOrEqual(10);
+  //     expect(id).not.toBeLessThan(10);
+  //     expect(id).not.toBeGreaterThan(100);
+  //  }
+  // });
   test('generates a number within a defined range', () => {
+   const min = 10;
+   const max = 100;
+   const range = [];
+   for (let i = min; i < max+1; i ++) {
+     range.push(i);
+   }
    for (let i = 0; i < 100; i ++) {
-      const id = getRandomId(10, 100);
-
-      expect(id).toBeLessThanOrEqual(100);
-      expect(id).toBeGreaterThanOrEqual(10);
-      expect(id).not.toBeLessThan(10);
-      expect(id).not.toBeGreaterThan(100);
+      const id = getRandomId(min, max);
+      expect(range).toContain(id);
    }
   });
 
