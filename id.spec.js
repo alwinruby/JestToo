@@ -1,14 +1,39 @@
 // id.spec.js
 
-function getNewId() {
-   return Math.random()
-}
+// function getNewId() {
+//    return Math.random()
+// }
 
-function getRandomId(min, max) {
-   return Math.floor(Math.random() * (max - min + 1) + min);
+// function getRandomId(min, max) {
+//    return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+
+function getRandomId(min = 0, max = 0, ids =[]) {
+   let id;
+   let a = [];
+   do {
+      id = Math.floor(Math.random() * (max - min + 1)) + min;
+      if (a.indexOf(id) === -1) {
+         a.push(id);
+      }
+      if (a.length === max - min + 1) {
+         if (ids.indexOf(id) > -1) {
+            return 'failed';
+         }
+      }
+   } while (ids.indexOf(id) > -1);
+   return id;
 }
 
 const currentIds = [1, 3, 2, 4];
+
+function getNewId(min = 0, max = 100, ids =[]) {
+   let id;
+   do {
+      id = Math.floor(Math.random() * (max - min + 1)) + min;
+   } while (ids.indexOf(id) > -1);
+   return id;
+}
 
 describe('Jest Basics', () => {
    test('Jest is working', () => {
