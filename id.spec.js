@@ -13,21 +13,36 @@ function getNewId() {
    return Math.random()
 }
 
-function getRandomId() {
-   return Math.floor(Math.random()); // convert to integer
+// function getRandomId() {
+//    return Math.floor(Math.random()); // convert to integer
+// }
+
+function getRandomId(min, max) {
+   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 describe('Requirements', () => {
 
   test('returns a random number', () => {
-   const originalMath = Object.create(global.Math);
-   const mockMath = Object.create(global.Math);
-   mockMath.random = () => 0.75;
-   global.Math = mockMath;
-   const id = getNewId();
-   expect(id).toBe(0.75);
-   global.Math = originalMath;
+     jest.spyOn(Math, 'floor');
+     const mockMath = Object.create(global.Math);
+     const originalMath = Object.create(global.Math);
+     mockMath.random = () => 0.75;
+     global.Math = mockMath;
+     const id = getNewId(10, 100);
+     expect(id).toBe(0.75);
+     global.Math = originalMath;
   });
+
+  // test('returns a random number', () => {
+  //  const originalMath = Object.create(global.Math);
+  //  const mockMath = Object.create(global.Math);
+  //  mockMath.random = () => 0.75;
+  //  global.Math = mockMath;
+  //  const id = getNewId();
+  //  expect(id).toBe(0.75);
+  //  global.Math = originalMath;
+  // });
 
   // test('returns a random number2', () => {
   //  jest.spyOn(Math, 'floor'); // <--------------------changed
@@ -46,10 +61,21 @@ describe('Requirements', () => {
    expect(id).toBe(Math.floor(id));
   });
 
-  test('generates a number within a specified range', () => {
-   const id = getRandomId(10, 100);
-   expect(id).toBeLessThanOrEqual(100);
-   expect(id).toBeGreaterThanOrEqual(10);
-});
+  // test('generates a number within a specified range', () => {
+  //  const id = getRandomId(10, 100);
+  //  expect(id).toBeLessThanOrEqual(100);
+  //  expect(id).toBeGreaterThanOrEqual(10);
+  // });
+
+  test('generates a number within a defined range', () => {
+   for (let i = 0; i < 100; i ++) {
+      const id = getRandomId(10, 100);
+
+      expect(id).toBeLessThanOrEqual(100);
+      expect(id).toBeGreaterThanOrEqual(10);
+      expect(id).not.toBeLessThan(10);
+      expect(id).not.toBeGreaterThan(100);
+   }
+  });
 
 });
