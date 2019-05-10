@@ -48,10 +48,18 @@ describe('Requirements', () => {
    }
   });
 
+  // test('generates a unique number', () => {
+  //  const id = getRandomId();
+  //  const index = currentIds.indexOf(id);
+  //  expect(index).toBe(-1);
+  // });
+
   test('generates a unique number', () => {
-   const id = getRandomId();
-   const index = currentIds.indexOf(id);
-   expect(index).toBe(-1);
+   mockIds = [1, 2, 3, 4, 5];
+   let id = getRandomId(1, 5, mockIds);
+   expect(id).toBe('failed');
+   id = getRandomId(1, 6, mockIds);
+   expect(id).toBe(6);
   });
 
 });
