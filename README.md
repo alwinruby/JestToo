@@ -16,3 +16,11 @@ Create a random number
 2. A test is just a function whose arguments define the test.
 
 3. Specifications define what our code should do and are ultimately what we test.
+
+
+###Project setup
+
+    Create an NPM project: npm init.
+    Create id.js and add it to the project’s root.
+    Install Jest: npm install jest --D
+    Update the package.json test script
