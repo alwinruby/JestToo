@@ -1,11 +1,13 @@
 // id.spec.js
 
 function getNewId() {
-   Math.random()
+   return Math.random();
 }
 
-test('Jest is working', () => {
-   expect(1).toBe(1);
+describe('Check Jest', () => {
+  test('Jest is working', () => {
+     expect(1).toBe(1);
+  });
 });
 
 describe('Test Requirements', () => {
