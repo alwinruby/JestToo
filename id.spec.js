@@ -20,4 +20,9 @@ describe('Test Requirements', () => {
    expect(id).toBe(0.75);
   });
 
+  test('returns an integer', () => {
+   const id = getRandomId();
+   expect(Number.isInteger(id)).toBe(true);
+  });
+
 });
