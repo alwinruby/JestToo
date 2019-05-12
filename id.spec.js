@@ -1,7 +1,7 @@
 // id.spec.js
 
 function getNewId() {
-   return Math.random();
+  return Math.random();
 }
 
 describe('Check Jest', () => {
@@ -13,16 +13,16 @@ describe('Check Jest', () => {
 describe('Test Requirements', () => {
 
   test('returns a random number', () => {
-   const mockMath = Object.create(global.Math);
-   mockMath.random = jest.fn(() => 0.75);
-   global.Math = mockMath;
-   const id = getNewId();
-   expect(id).toBe(0.75);
+    const mockMath = Object.create(global.Math);
+    mockMath.random = jest.fn(() => 0.75);
+    global.Math = mockMath;
+    const id = getNewId();
+    expect(id).toBe(0.75);
   });
 
   test('returns an integer', () => {
-   const id = getRandomId();
-   expect(Number.isInteger(id)).toBe(true);
+    const id = getRandomId();
+    expect(id).toBe(Math.floor(id));
   });
 
 });
